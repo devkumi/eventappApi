@@ -1,21 +1,20 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const router = express.Router()
 const bcrypt = require('bcrypt'); // For password hashing
 
 const app = express();
 const port = 3000;
 
 // Import your User and Event models
-const User = require('./models/user');
-const Event = require('./models/event');
+const User = require('../models/user');
+const Event = require('../models/event');
 
-app.use(express.json());
 
 // Connect to MongoDB (make sure to replace 'your_database_url' with your actual MongoDB URL)
-mongoose.connect('your_database_url', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('your_database_url', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // User registration
-app.post('/register', async (req, res) => {
+router.post('/register', async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
@@ -37,7 +36,7 @@ app.post('/register', async (req, res) => {
 });
 
 // User login
-app.post('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -62,7 +61,7 @@ app.post('/login', async (req, res) => {
 });
 
 // Create event
-app.post('/events', async (req, res) => {
+router.post('/events', async (req, res) => {
   try {
     const { eventName, date, location, description } = req.body;
 
@@ -88,7 +87,7 @@ app.post('/events', async (req, res) => {
 });
 
 // View events
-app.get('/events', async (req, res) => {
+router.get('/events', async (req, res) => {
   try {
     const events = await Event.find();
     res.status(200).json(events);
@@ -98,7 +97,7 @@ app.get('/events', async (req, res) => {
 });
 
 // Update event
-app.put('/events/:eventId', async (req, res) => {
+router.put('/events/:eventId', async (req, res) => {
   try {
     const { eventId } = req.params;
     const { eventName, date, location, description } = req.body;
@@ -116,7 +115,7 @@ app.put('/events/:eventId', async (req, res) => {
 });
 
 // Delete event
-app.delete('/events/:eventId', async (req, res) => {
+router.delete('/events/:eventId', async (req, res) => {
   try {
     const { eventId } = req.params;
 
@@ -135,6 +134,4 @@ app.delete('/events/:eventId', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+module.exports = router
