@@ -6,7 +6,12 @@ const cors = require('cors')
 const express = require('express')
 
 const app = express()
-app.use(cors()); 
+const corsOptions ={
+    origin:'*', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+ }
+app.use(cors(corsOptions)); 
 const mongoose = require('mongoose')
 
 mongoose.connect(process.env.DATABASE_URL)

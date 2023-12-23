@@ -7,13 +7,17 @@ const eventSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    required: true,
+    default: Date.now
   },
   location: {
     type: String,
     required: true,
   },
   description: {
+    type: String,
+    required: true,
+  },
+  user_id: {
     type: String,
     required: true,
   },
