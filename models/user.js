@@ -1,30 +1,28 @@
 const mongoose = require('mongoose');
 
-const eventSchema = new mongoose.Schema({
-  eventName: {
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
     type: String,
     required: true,
   },
-  date: {
-    type: Date,
-    required: true,
-  },
-  location: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  attendees: [
+  eventsCreated: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User', // Assuming you have a User model
+      ref: 'Event',
     },
   ],
 });
 
-const Event = mongoose.model('Event', eventSchema);
+const User = mongoose.model('User', userSchema);
 
-module.exports = Event;
+module.exports = User;

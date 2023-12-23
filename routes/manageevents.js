@@ -18,9 +18,11 @@ router.post('/register', async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
+    
     // Hash and salt the password
     const hashedPassword = await bcrypt.hash(password, 10);
-
+    console.log(username);
+    console.log(hashedPassword);
     const newUser = new User({
       username,
       email,
@@ -31,7 +33,7 @@ router.post('/register', async (req, res) => {
 
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: error.message });
   }
 });
 
