@@ -53,10 +53,26 @@ router.post('/login', async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
-
+    
+    var userRes = {
+      userId:user._id,
+      username: user.username,
+      email: user.email,
+      eventsCreated: user.eventsCreated
+    }
     // Here, you might generate and send a JWT token for authentication
 
-    res.status(200).json({ message: 'Login successful' });
+    res.status(200).json({statusCode: 200,  message: 'Login successful',response: userRes});
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// View Users
+router.get('/users', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
