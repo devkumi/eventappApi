@@ -17,13 +17,13 @@ Endpoint: `POST /register`
 
 Register a new user.
 
-
+```json
 {
   "username": "john_doe",
   "email": "john.doe@example.com",
   "password": "securePassword123"
 }
-
+```
 Response:
 
 201: User registered successfully
@@ -36,12 +36,12 @@ Endpoint: `POST /login`
 
 Log in an existing user.
 
-
+```json
 {
   "email": "john_doe@example.com",
   "password": "securePassword123"
 }
-
+```
 
 Response:
 
@@ -56,14 +56,14 @@ Endpoint: `POST /events`
 
 Create a new event.
 
-
+```json
 {
   "eventName": "Tech Conference 2023",
   "date": "2023-12-31T08:00:00Z",
   "location": "Convention Center",
   "description": "A conference on the latest technology trends."
 }
-
+```
 
 Response:
 
@@ -78,7 +78,7 @@ Endpoint: `POST /events`
 
 Get a list of all events.
 
-
+```json
 [
   {
     "eventName": "Tech Conference 2023",
@@ -88,7 +88,7 @@ Get a list of all events.
   },
   // ... other events
 ]
-
+```
 
 Response:
 
@@ -102,17 +102,19 @@ Endpoint: PUT /events/{eventId}
 
 Update an existing event.
 
-
+```json
 {
   "eventName": "Updated Tech Conference 2023",
   "date": "2023-12-31T09:00:00Z",
   "location": "New Convention Center",
   "description": "An updated conference on the latest technology trends."
 }
-
+```
 Response:
 
 200: Successful response
+
+```json
 [
   {
     "eventName": "Tech Conference 2023",
@@ -122,7 +124,7 @@ Response:
   },
   // ... other events
 ]
-
+```
 500: Internal Server Error
 
 
@@ -131,26 +133,26 @@ Endpoint: PUT /events/{eventId}
 
 Update an existing event.
 
-
+```json
 {
   "eventName": "Updated Tech Conference 2023",
   "date": "2023-12-31T09:00:00Z",
   "location": "New Convention Center",
   "description": "An updated conference on the latest technology trends."
 }
-
+```
 Response:
 
 200: Successful response
 
-
+```json
 {
   "eventName": "Updated Tech Conference 2023",
   "date": "2023-12-31T09:00:00Z",
   "location": "New Convention Center",
   "description": "An updated conference on the latest technology trends."
 }
-
+```
 500: Internal Server Error
 
 
@@ -165,15 +167,15 @@ Response:
 200: Event deleted successfully
 500: Internal Server Error
 
-Schemas
 
+```json
 {
   "username": "john_doe",
   "email": "john.doe@example.com",
   "password": "securePassword123"
 }
 
-``json
+
 
 {
   "eventName": "Tech Conference 2023",
@@ -181,3 +183,4 @@ Schemas
   "location": "Convention Center",
   "description": "A conference on the latest technology trends."
 }
+```
