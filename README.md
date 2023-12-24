@@ -17,7 +17,7 @@ Endpoint: `POST /register`
 
 Register a new user.
 
-```json
+
 {
   "username": "john_doe",
   "email": "john.doe@example.com",
@@ -36,7 +36,7 @@ Endpoint: `POST /login`
 
 Log in an existing user.
 
-```json
+
 {
   "email": "john_doe@example.com",
   "password": "securePassword123"
@@ -56,7 +56,7 @@ Endpoint: `POST /events`
 
 Create a new event.
 
-```json
+
 {
   "eventName": "Tech Conference 2023",
   "date": "2023-12-31T08:00:00Z",
@@ -78,7 +78,7 @@ Endpoint: `POST /events`
 
 Get a list of all events.
 
-```json
+
 [
   {
     "eventName": "Tech Conference 2023",
@@ -102,7 +102,7 @@ Endpoint: PUT /events/{eventId}
 
 Update an existing event.
 
-```json
+
 {
   "eventName": "Updated Tech Conference 2023",
   "date": "2023-12-31T09:00:00Z",
@@ -131,7 +131,7 @@ Endpoint: PUT /events/{eventId}
 
 Update an existing event.
 
-```json
+
 {
   "eventName": "Updated Tech Conference 2023",
   "date": "2023-12-31T09:00:00Z",
@@ -143,7 +143,7 @@ Response:
 
 200: Successful response
 
-```json
+
 {
   "eventName": "Updated Tech Conference 2023",
   "date": "2023-12-31T09:00:00Z",
@@ -166,7 +166,7 @@ Response:
 500: Internal Server Error
 
 Schemas
-```json
+
 {
   "username": "john_doe",
   "email": "john.doe@example.com",
